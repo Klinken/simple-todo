@@ -36,10 +36,31 @@
 }
 
 /* Todo */
+.todo-list .todo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 .todo-list p {
     padding: 10px;
 }
 .todo-list p:hover {
     color: #FFF;
+}
+
+.todo-text {
+
+}
+
+.todo-badge {
+    justify-self: center;
+    align-self: center;
+}
+
+/* Badge */
+
+.badge {
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
 }

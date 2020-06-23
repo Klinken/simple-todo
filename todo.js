@@ -15,7 +15,12 @@ for (var index = 0; index < localStorage.length; index++) {
     var todoArr = splitToArr(todoToGet);
 
     document.getElementById(todoList).innerHTML += 
-    `<p id="todo-${index}-text">${todoArr[0]}</p>`;
+    `<div class="todo">
+    <div class="todo-text">
+    <p id="todo-${index}-text">${todoArr[0]}</p>
+    </div>
+    <div class="todo-badge"><span class="badge">${todoArr[1]}</span></div>
+    </div>`;
 
 }
 
