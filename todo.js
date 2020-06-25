@@ -18,7 +18,7 @@ for (var index = 0; index < localStorage.length; index++) {
             <p>${todoArr[0]}</p>
             </div>
             <div class="todo-badge"><span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span></div>
-            <button onclick="deleteTodo(${todoKeyGet})">Remove</button>
+            <button onclick="delete(${todoKeyGet})">Remove</button>
          </div>`;
 
 }
@@ -49,11 +49,12 @@ function todoSet(text, id){
     var saveText = text;
     var storageKey = id;
             //Make sure object.key doesn't exist already
-            if(localStorage.key(id) != null){
-                todoSet(saveText, storageKey++);
+            if(localStorage.key(id)){
+            localStorage.setItem(storageKey, text + ";" + 0);
+                
             }
 
-    localStorage.setItem(storageKey, text + ";" + 0);
+        todoSet(saveText, storageKey++);
 
 }
 
