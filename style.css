@@ -31,21 +31,20 @@
 .todo-list {
     grid-area: todos;
     display: grid;
+    grid-template-columns: 1fr;
     gap: 10px;
     background-color: grey;
 }
 
 /* Todo */
-.todo-list .todo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
 
-.todo-list p {
+.todo {
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
 }
-.todo-list p:hover {
-    color: #FFF;
+.todo:hover {
+    cursor: pointer;
 }
 
 .todo-text {
@@ -59,8 +58,20 @@
 
 /* Badge */
 
+.badge,
+.badge-doing,
+.badge-done {
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
 .badge {
     background-color: #FFF;
-    padding: 10px;
-    border-radius: 10px;
+}
+.badge-doing {
+    background-color: yellow;
+}
+
+.badge-done {
+    background-color: green;
 }
