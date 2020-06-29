@@ -1,30 +1,5 @@
-"use-strict";
 
-//IDs of elements
-const todoList = "todo-list";
-const todoCreateText = "todo-create-text";
-const todoCreateButton = "todo-create-button";
-
-
-for (var index = 0; index < localStorage.length; index++) {
-    var todoKeyGet = localStorage.key(index);
-    var todoItemGet = localStorage.getItem(todoKeyGet);
-    var todoArr = splitToArr(todoItemGet);
-    var currentTodo = "todo-" + index;
-
-    document.getElementById(todoList).innerHTML +=
-        `<div id="todo-${todoKeyGet}" onclick="changeStatus('${todoKeyGet}')" class="todo" title="Click to change status">
-            <div class="todo-text">
-            <p>${todoArr[0]}</p>
-            </div>
-            <div class="todo-badge"><span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span></div>
-            <button onclick="delete(${todoKeyGet})">Remove</button>
-         </div>`;
-
-}
-
-
-//Helper functions
+//FUNCTIONS
 
 function createTodo(id) {
     var textToSave = document.getElementById(id).value;
@@ -38,28 +13,36 @@ function createTodo(id) {
 
     } else {
         //Creates an item in the users localStorage
-        todoSet(textToSave, localStorage.length);
+        todoSet(textToSave, 0);
 
     }
 
     location.reload();
 }
 
-function todoSet(text, id){
+function todoSet(text, number){
     var saveText = text;
-    var storageKey = id;
+    var storageKey = number;
             //Make sure object.key doesn't exist already
-            if(localStorage.key(id)){
-            localStorage.setItem(storageKey, text + ";" + 0);
-                
-            }
+    if(localStorage.getItem(storageKey)){
+        storageKey++;
+        todoSet(saveText, storageKey);
+        
+    } else {
+        localStorage.setItem(storageKey, saveText + ";" + 0);
 
-        todoSet(saveText, storageKey++);
+    }
 
 }
 
-function deleteTodo(id){
-    localStorage.removeItem(id);
+function deleteTodo(item){
+    var todoGet = localStorage.getItem(item);
+    var todoArr = splitToArr(todoGet);
+
+    todoArr[1] = 3;
+
+    localStorage.setItem(item, todoArr[0] + ";" + todoArr[1]);
+    
     location.reload();
 }
 
@@ -115,10 +98,3 @@ function splitToArr(text) {
     var arr = text.split(";");
     return arr;
 }
-
-
-//Setup eventlisteners
-
-document.getElementById(todoCreateButton).addEventListener("click", function () {
-    createTodo(todoCreateText);
-});

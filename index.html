@@ -6,19 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/todo.js" async></script>
+    <script src="/js/todo.functions.js"></script>
+    <script src="/js/todo.js" async></script>
 </head>
 
 <body>
-    <div class="todo-grid">
+    <a href="/archive.html">Deleted</a>
         <!-- Text to create a todo -->
         <div class="control">
             <h2 class="title">Add a task</h2>
             <input type="text" name="" id="todo-create-text"><button id="todo-create-button">Create</button>
-            <!-- Make button hitable by pressing enter -->
+            <!-- TODO: Make button hitable by pressing enter -->
         </div>
         <!-- List of todos -->
+    <div class="three-columns">
         <div class="todo-list" id="todo-list" ></div>
+        <div id="todo-list-doing"></div>
+        <div id="todo-list-done"></div>
     </div>
 </body>
 
