@@ -1,6 +1,6 @@
 
 //IDs of elements
-const todoList = "todo-list";
+const todoList = "todo-list-pending";
 const todoListDoing = "todo-list-doing";
 const todoListDone = "todo-list-done";
 const todoListRemoved = "todo-list-removed";
@@ -10,14 +10,16 @@ const todoCreateButton = "todo-create-button";
 
 
 //Made to be used in the loop
-function createHTML(targetID){
+function createHTML(targetID, deletedBool){
     document.getElementById(targetID).innerHTML +=
     `<div id="todo-${index}" class="todo" title="Click on status to change status">
         <div class="todo-text">
         <p>${todoArr[0]}</p>
         </div>
-        <div class="todo-badge" onclick="changeStatus(${index})" title="Click here to change status"><span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span></div>
-        <button onclick="deleteTodo(${index})">Remove</button>
+        <div class="todo-badge" onclick="changeStatus(${index})" title="${deletedBool ? 'Click to restore' : 'Click to change status'}">
+        <span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span>
+        </div>
+        <button onclick="deleteTodo(${index})" ${deletedBool ? "disabled" : ""}>Remove</button>
      </div>`;
 }
 
@@ -28,16 +30,16 @@ for (var index = 0; index < localStorage.length; index++) {
     var currentTodo = "todo-" + index;
 
     if(todoArr[1] == "0" && document.getElementById(todoList)){
-        createHTML(todoList);
+        createHTML(todoList, false);
          
     } else if(todoArr[1] == "1" && document.getElementById(todoListDoing)){
-        createHTML(todoListDoing);
+        createHTML(todoListDoing, false);
 
     } else if(todoArr[1] == "2" && document.getElementById(todoListDone)){
-        createHTML(todoListDone);
+        createHTML(todoListDone, false);
 
     } else if(todoArr[1] == "3" && document.getElementById(todoListRemoved)) {
-        createHTML(todoListRemoved);
+        createHTML(todoListRemoved, true);
     }
 
 }

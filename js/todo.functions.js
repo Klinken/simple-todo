@@ -27,7 +27,7 @@ function todoSet(text, number){
     if(localStorage.getItem(storageKey)){
         storageKey++;
         todoSet(saveText, storageKey);
-        
+
     } else {
         localStorage.setItem(storageKey, saveText + ";" + 0);
 
@@ -87,8 +87,10 @@ function displayStatus(number) {
             return "Doing";
         case 2:
             return "Completed";
+        case 3:
+            return "Removed";
         default:
-            return "Oh no";
+            return "Unknown Status";
 
     }
 }
