@@ -12,7 +12,8 @@ const todoCreateButton = "todo-create-button";
 //Made to be used in the loop
 function createHTML(targetID, deletedBool){
     document.getElementById(targetID).innerHTML +=
-    `<div id="todo-${index}" class="todo" title="Click on status to change status">
+    `<div class="todo-wrap">
+    <div id="todo-${index}" class="todo" title="Click on status to change status">
         <div class="todo-text">
         <p>${todoArr[0]}</p>
         </div>
@@ -20,6 +21,7 @@ function createHTML(targetID, deletedBool){
         <span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span>
         </div>
         <button onclick="deleteTodo(${index})" ${deletedBool ? "disabled" : ""}>Remove</button>
+     </div>
      </div>`;
 }
 
