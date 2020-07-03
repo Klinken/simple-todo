@@ -20,7 +20,7 @@ function createHTML(targetID, deletedBool){
         <div class="todo-badge" onclick="changeStatus(${index})" title="${deletedBool ? 'Click to restore' : 'Click to change status'}">
         <span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span>
         </div>
-        <button onclick="deleteTodo(${index})" ${deletedBool ? "disabled" : ""}>Remove</button>
+        <button class="delete-button" onclick="deleteTodo(${index})" ${deletedBool ? "disabled" : ""}>Remove</button>
      </div>
      </div>`;
 }

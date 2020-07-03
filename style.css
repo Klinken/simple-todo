@@ -1,33 +1,76 @@
 :root {
     --side-padding: 0 20px;
+    --primary-color: rgb(102, 126, 234);
+    --secondary-color: rgb(118, 75, 162);
 }
 
 body {
     margin: 0;
     padding: 0;
+    background: rgb(102, 126, 234);
+    background: linear-gradient(252deg, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 1) 100%);
+    font-family: 'Roboto', sans-serif;
 }
 
-.top-link {
-    display: inline-block;
-    margin: 10px 0px;
-    padding: var(--side-padding);
+/* BASE ELEMENTS */
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+button {
+    border: none;
+    background-color: var(--primary-color);
+    color: #FFF;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+button:active {
+    background-color: var(--secondary-color);
+}
+
+.delete-button {
+    align-self: center;
+    justify-self: end;
+}
+
+/* Navigation */
+
+.navigation {
+    display: grid;
+    background-color: #FFF;
+    padding: 20px 20px;
+    box-shadow: 1px 0px 11px 5px rgb(89, 89, 89);
+    grid-template-columns: auto auto;
 }
 
 /* Controls
 ------------------------ */
-.control{
-    grid-area: controls;
-    display: grid;
-    grid-template-columns: 250px 100px;
-    grid-template-rows: 55px 25px;
-    padding: var(--side-padding);
-}
-.control .title {
-    grid-area: 1 / 1 / 1 / 3;
+
+.title {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
 }
 
 #todo-create-text {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    border: none;
+    box-shadow: 0px 0px 3px 1px #757575 inset;
+    border-radius: 10px;
+    padding: 10px;
+}
+#todo-create-button {
+    display: inline-block;
+}
 
+.top-link {
+    justify-self: end;
+    align-self: center;
 }
 
 /* Todo-list
@@ -36,34 +79,30 @@ body {
 .todo-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 190px;
-    gap: 20px;
+    grid-auto-rows: 100px;
+    gap: 40px;
     padding: var(--side-padding);
 }
 
 /* Todo */
-.todo-wrap {
-    filter: drop-shadow(-2px -2px 2px rgb(117, 117, 117));
-}
 
 .todo {
     display: grid;
-    grid-template-columns: auto auto 70px;
+    grid-template-columns: auto auto auto;
     gap: 10px;
-    padding: 10px;
-    clip-path: polygon(5.58% 0, 100% 0%, 100% 100%, 0px 100%, 0 36%);
+    padding: 10px 30px 10px 35px;
+    clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0 100%, 0 20px);
     background-color: white;
     height: 100%;
 }
 
-.todo-text {
-
-}
+.todo-text {}
 
 .todo-badge {
     align-self: center;
     justify-self: end;
 }
+
 .todo-badge:hover {
     cursor: pointer;
 }
@@ -80,6 +119,7 @@ body {
 .badge {
     background-color: #FFF;
 }
+
 .badge-doing {
     background-color: yellow;
 }
@@ -93,7 +133,6 @@ body {
 .three-columns {
     display: grid;
     gap: 15px;
-    grid-template-columns: auto auto auto;
-    margin-top: 10px;
-    padding: var(--side-padding);
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 50px;
 }
