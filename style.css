@@ -88,7 +88,7 @@ button:active {
 
 .todo {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr auto auto;
     gap: 10px;
     padding: 10px 30px 10px 35px;
     clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0 100%, 0 20px);
@@ -117,15 +117,15 @@ button:active {
 }
 
 .badge {
-    background-color: #FFF;
-}
-
-.badge-doing {
     background-color: yellow;
 }
 
+.badge-doing {
+    background-color: rgb(83, 153, 83);
+}
+
 .badge-done {
-    background-color: green;
+    background-color: rgb(0, 75, 0);
 }
 
 /* Three Columns */
