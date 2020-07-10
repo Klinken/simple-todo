@@ -20,7 +20,7 @@ function createHTML(targetID, deletedBool){
         <div class="todo-badge" onclick="changeStatus(${index})" title="${deletedBool ? 'Click to restore' : 'Click to change status'}">
         <span class="${badgeClassSet(+todoArr[1])}">${displayStatus(+todoArr[1])}</span>
         </div>
-        <button class="delete-button" onclick="deleteTodo(${index})" ${deletedBool ? "disabled" : ""}>Remove</button>
+        <button class="delete-button" onclick="deleteTodo(${index})" ${deletedBool ? "style='display:none;'" : ""}>Remove</button>
      </div>
      </div>`;
 }
@@ -49,6 +49,12 @@ for (var index = 0; index < localStorage.length; index++) {
 
 //Setup eventlisteners
 
-document.getElementById(todoCreateButton).addEventListener("click", function () {
+document.getElementById(todoCreateText).addEventListener("keyup", function(event){ // Triggers the button to create a todo, with a key (Enter)
+    if(event.keyCode === 13){
+        createTodo(todoCreateText);
+    }
+});
+
+document.getElementById(todoCreateButton).addEventListener("click", function () { // Same function but activates on click
     createTodo(todoCreateText);
 });

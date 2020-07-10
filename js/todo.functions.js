@@ -5,11 +5,11 @@ function createTodo(id) {
     var textToSave = document.getElementById(id).value;
 
     //Check for no input or divider = ;
-    if (textToSave.length <= 0 || textToSave.search(";") > 0) {
-        if (textToSave.length <= 0) {
-            alert("Input text");
-        }
-        alert("Remove the following character: ;");
+    if (textToSave.length <= 0) {
+        alert("Input text");
+
+    } else if(textToSave.search(";") >= 0){
+        alert("Remove the following character: ;");    
 
     } else {
         //Creates an item in the users localStorage
@@ -73,6 +73,8 @@ function badgeClassSet(number){
             return "badge-doing";
         case 2:
             return "badge-done";
+            case 3: 
+            return "badge-deleted";
         default:
             return "badge";
 
@@ -88,7 +90,7 @@ function displayStatus(number) {
         case 2:
             return "Completed";
         case 3:
-            return "Removed";
+            return "Restore";
         default:
             return "Unknown Status";
 

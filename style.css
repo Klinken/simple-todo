@@ -2,13 +2,14 @@
     --side-padding: 0 20px;
     --primary-color: rgb(102, 126, 234);
     --secondary-color: rgb(118, 75, 162);
+    --shadow-color: #757575;
 }
 
 body {
     margin: 0;
     padding: 0;
     background: rgb(102, 126, 234);
-    background: linear-gradient(252deg, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 1) 100%);
+    background: linear-gradient(252deg, rgb(155, 169, 229) 0%, rgb(116, 91, 141) 100%);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -43,29 +44,29 @@ button:active {
     display: grid;
     background-color: #FFF;
     padding: 20px 20px;
-    box-shadow: 1px 0px 11px 5px rgb(89, 89, 89);
+    box-shadow: 1px 0px 11px 5px var(--shadow-color);
     grid-template-columns: auto auto;
 }
 
+
 /* Controls
 ------------------------ */
-
-.title {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
 
 #todo-create-text {
     display: inline-block;
     margin: 0 20px 0 0;
     border: none;
-    box-shadow: 0px 0px 3px 1px #757575 inset;
+    box-shadow: 0px 0px 2px 0px var(--shadow-color) inset;
     border-radius: 10px;
     padding: 10px;
 }
 #todo-create-button {
     display: inline-block;
+}
+@media all and (max-width: 358px){
+    #todo-create-button{
+        margin: 10px 0;
+    }
 }
 
 .top-link {
@@ -84,21 +85,41 @@ button:active {
     padding: var(--side-padding);
 }
 
+@media all and (min-width: 900px){
+    .todo-list {
+        border-left: 1px solid #FFF;
+    }
+    .todo-list:nth-of-type(1){
+        border-left: none;
+    }
+}
+
 /* Todo */
+
+.todo-wrap {
+    filter: drop-shadow(1px 1px 4px var(--shadow-color));
+}
 
 .todo {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-areas: 
+    "text badge"
+    "text button"
+    ;
     gap: 10px;
-    padding: 10px 30px 10px 35px;
+    padding: 18px 30px 10px 35px;
     clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0 100%, 0 20px);
     background-color: white;
     height: 100%;
 }
 
-.todo-text {}
+.todo-text {
+    grid-area: text;
+    padding: 0px 10px 0px 0px;
+}
 
 .todo-badge {
+    grid-area: badge;
     align-self: center;
     justify-self: end;
 }
@@ -107,17 +128,26 @@ button:active {
     cursor: pointer;
 }
 
+.delete-button {
+    grid-area: button;
+}
+
 /* Badge */
 
 .badge,
 .badge-doing,
-.badge-done {
-    padding: 10px 15px;
+.badge-done,
+.badge-deleted {
+    padding: 10px 20px;
     border-radius: 10px;
+    color: white;
+    font-size: 0.9rem;
+    align-self: center;
 }
 
 .badge {
     background-color: yellow;
+    color: black;
 }
 
 .badge-doing {
@@ -128,11 +158,31 @@ button:active {
     background-color: rgb(0, 75, 0);
 }
 
-/* Three Columns */
+.badge-deleted {
+    color: darkgrey;
+}
+.badge-deleted:hover {
+    background-color: rgb(231, 231, 231);
+}
 
+/* Layouts */
+
+.one-column,
 .three-columns {
     display: grid;
     gap: 15px;
+    margin-top: 35px;
+}
+
+.three-columns {
+    grid-template-columns: auto;
+    gap: 45px;
+}
+
+@media all and (min-width: 900px){
+
+.three-columns {
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 50px;
+    gap: 0;
+}
 }
