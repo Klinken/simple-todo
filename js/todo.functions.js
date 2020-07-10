@@ -1,4 +1,3 @@
-
 //FUNCTIONS
 
 function createTodo(id) {
@@ -8,8 +7,8 @@ function createTodo(id) {
     if (textToSave.length <= 0) {
         alert("Input text");
 
-    } else if(textToSave.search(";") >= 0){
-        alert("Remove the following character: ;");    
+    } else if (textToSave.search(";") >= 0) {
+        alert("Remove the following character: ;");
 
     } else {
         //Creates an item in the users localStorage
@@ -20,11 +19,11 @@ function createTodo(id) {
     location.reload();
 }
 
-function todoSet(text, number){
+function todoSet(text, number) {
     var saveText = text;
     var storageKey = number;
-            //Make sure object.key doesn't exist already
-    if(localStorage.getItem(storageKey)){
+    //Make sure object.key doesn't exist already
+    if (localStorage.getItem(storageKey)) {
         storageKey++;
         todoSet(saveText, storageKey);
 
@@ -35,14 +34,14 @@ function todoSet(text, number){
 
 }
 
-function deleteTodo(item){
+function deleteTodo(item) {
     var todoGet = localStorage.getItem(item);
     var todoArr = splitToArr(todoGet);
 
     todoArr[1] = 3;
 
     localStorage.setItem(item, todoArr[0] + ";" + todoArr[1]);
-    
+
     location.reload();
 }
 
@@ -50,7 +49,7 @@ function deleteTodo(item){
 function changeStatus(item) {
     var todoGet = localStorage.getItem(item);
     var todoArr = splitToArr(todoGet);
-    switch(+todoArr[1]){
+    switch (+todoArr[1]) {
         case 0:
             todoArr[1] = 1;
             break;
@@ -64,16 +63,16 @@ function changeStatus(item) {
 
     localStorage.setItem(item, todoArr[0] + ";" + todoArr[1]);
     location.reload();
-    
+
 }
 
-function badgeClassSet(number){
+function badgeClassSet(number) {
     switch (number) {
         case 1:
             return "badge-doing";
         case 2:
             return "badge-done";
-            case 3: 
+        case 3:
             return "badge-deleted";
         default:
             return "badge";

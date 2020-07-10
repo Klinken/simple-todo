@@ -29,6 +29,7 @@ button {
     padding: 10px 20px;
     border-radius: 10px;
 }
+
 button:active {
     background-color: var(--secondary-color);
 }
@@ -60,11 +61,13 @@ button:active {
     border-radius: 10px;
     padding: 10px;
 }
+
 #todo-create-button {
     display: inline-block;
 }
-@media all and (max-width: 358px){
-    #todo-create-button{
+
+@media all and (max-width: 358px) {
+    #todo-create-button {
         margin: 10px 0;
     }
 }
@@ -85,11 +88,12 @@ button:active {
     padding: var(--side-padding);
 }
 
-@media all and (min-width: 900px){
+@media all and (min-width: 900px) {
     .todo-list {
         border-left: 1px solid #FFF;
     }
-    .todo-list:nth-of-type(1){
+
+    .todo-list:nth-of-type(1) {
         border-left: none;
     }
 }
@@ -97,17 +101,19 @@ button:active {
 /* Todo */
 
 .todo-wrap {
+    -webkit-filter: drop-shadow(1px 1px 4px var(--shadow-color));
     filter: drop-shadow(1px 1px 4px var(--shadow-color));
 }
 
 .todo {
     display: grid;
-    grid-template-areas: 
-    "text badge"
-    "text button"
+    grid-template-areas:
+        "text badge"
+        "text button"
     ;
     gap: 10px;
     padding: 18px 30px 10px 35px;
+    -webkit-clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0 100%, 0 20px);
     clip-path: polygon(20px 0, 100% 0%, 100% 100%, 0 100%, 0 20px);
     background-color: white;
     height: 100%;
@@ -161,6 +167,7 @@ button:active {
 .badge-deleted {
     color: darkgrey;
 }
+
 .badge-deleted:hover {
     background-color: rgb(231, 231, 231);
 }
@@ -179,10 +186,10 @@ button:active {
     gap: 45px;
 }
 
-@media all and (min-width: 900px){
+@media all and (min-width: 900px) {
 
-.three-columns {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-}
+    .three-columns {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+    }
 }

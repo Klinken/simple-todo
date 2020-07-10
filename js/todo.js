@@ -1,4 +1,3 @@
-
 //IDs of elements
 const todoList = "todo-list-pending";
 const todoListDoing = "todo-list-doing";
@@ -10,9 +9,9 @@ const todoCreateButton = "todo-create-button";
 
 
 //Made to be used in the loop
-function createHTML(targetID, deletedBool){
+function createHTML(targetID, deletedBool) {
     document.getElementById(targetID).innerHTML +=
-    `<div class="todo-wrap">
+        `<div class="todo-wrap">
     <div id="todo-${index}" class="todo" title="Click on status to change status">
         <div class="todo-text">
         <p>${todoArr[0]}</p>
@@ -31,16 +30,16 @@ for (var index = 0; index < localStorage.length; index++) {
     var todoArr = splitToArr(todoItemGet);
     var currentTodo = "todo-" + index;
 
-    if(todoArr[1] == "0" && document.getElementById(todoList)){
+    if (todoArr[1] == "0" && document.getElementById(todoList)) {
         createHTML(todoList, false);
-         
-    } else if(todoArr[1] == "1" && document.getElementById(todoListDoing)){
+
+    } else if (todoArr[1] == "1" && document.getElementById(todoListDoing)) {
         createHTML(todoListDoing, false);
 
-    } else if(todoArr[1] == "2" && document.getElementById(todoListDone)){
+    } else if (todoArr[1] == "2" && document.getElementById(todoListDone)) {
         createHTML(todoListDone, false);
 
-    } else if(todoArr[1] == "3" && document.getElementById(todoListRemoved)) {
+    } else if (todoArr[1] == "3" && document.getElementById(todoListRemoved)) {
         createHTML(todoListRemoved, true);
     }
 
@@ -49,8 +48,8 @@ for (var index = 0; index < localStorage.length; index++) {
 
 //Setup eventlisteners
 
-document.getElementById(todoCreateText).addEventListener("keyup", function(event){ // Triggers the button to create a todo, with a key (Enter)
-    if(event.keyCode === 13){
+document.getElementById(todoCreateText).addEventListener("keyup", function (event) { // Triggers the button to create a todo, with a key (Enter)
+    if (event.keyCode === 13) {
         createTodo(todoCreateText);
     }
 });
