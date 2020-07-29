@@ -8,8 +8,9 @@ const todoCreateButton = "todo-create-button";
 
 
 
-//Made to be used in the loop
+//This function creates the html for each created todo
 function createHTML(targetID, deletedBool) {
+
     document.getElementById(targetID).innerHTML +=
         `<div class="todo-wrap">
     <div id="todo-${index}" class="todo" title="Click on status to change status">
@@ -22,9 +23,10 @@ function createHTML(targetID, deletedBool) {
         <button class="delete-button" onclick="deleteTodo(${index})" ${deletedBool ? "style='display:none;'" : ""}>Remove</button>
      </div>
      </div>`;
+
 }
 
-
+//If any todos has been created, then the loop will get the todo and put it in the correct column, based on its status
 for (var index = 0; index < localStorage.length; index++) {
     var todoItemGet = localStorage.getItem(index);
     var todoArr = splitToArr(todoItemGet);
@@ -41,19 +43,22 @@ for (var index = 0; index < localStorage.length; index++) {
 
     } else if (todoArr[1] == "3" && document.getElementById(todoListRemoved)) {
         createHTML(todoListRemoved, true);
+        
     }
 
 }
 
 
-//Setup eventlisteners
+//Eventlisteners
 
 document.getElementById(todoCreateText).addEventListener("keyup", function (event) { // Triggers the button to create a todo, with a key (Enter)
-    if (event.keyCode === 13) {
+    
+    if (event.keyCode === 13) { 
         createTodo(todoCreateText);
     }
 });
 
-document.getElementById(todoCreateButton).addEventListener("click", function () { // Same function but activates on click
+document.getElementById(todoCreateButton).addEventListener("click", function () { // Same function as above but here it is activated by a click
+
     createTodo(todoCreateText);
 });

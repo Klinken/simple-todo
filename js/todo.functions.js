@@ -15,14 +15,18 @@ function createTodo(id) {
         todoSet(textToSave, 0);
 
     }
+    
+    document.getElementById(id).value = null; //Clears the input box
 
-    location.reload();
+    location.reload(); //Reloads the page
+    
 }
 
 function todoSet(text, number) {
     var saveText = text;
     var storageKey = number;
-    //Make sure object.key doesn't exist already
+    
+    //Makes sure object.key doesn't already exist
     if (localStorage.getItem(storageKey)) {
         storageKey++;
         todoSet(saveText, storageKey);
@@ -42,13 +46,14 @@ function deleteTodo(item) {
 
     localStorage.setItem(item, todoArr[0] + ";" + todoArr[1]);
 
-    location.reload();
+    location.reload(); //Reloads the page
 }
 
 
 function changeStatus(item) {
     var todoGet = localStorage.getItem(item);
     var todoArr = splitToArr(todoGet);
+    
     switch (+todoArr[1]) {
         case 0:
             todoArr[1] = 1;
@@ -62,7 +67,8 @@ function changeStatus(item) {
     }
 
     localStorage.setItem(item, todoArr[0] + ";" + todoArr[1]);
-    location.reload();
+
+    location.reload(); //Reloads the page
 
 }
 
